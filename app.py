@@ -86,21 +86,16 @@ def crear_usuario():
         # Verificamos si ya existe un usuario con ese email
         if bd.query(Usuario).filter_by(correo=correo).first():
             return jsonify({"detalle": "Correo ya registrado"}), 400
-
-        # Creamos el nuevo usuario
-        # IMPORTANTE: encriptamos la contraseña con bcrypt (nunca guardar en texto plano)
         usuario = Usuario(
             nombre=nombre,
             correo=correo,
             contrasena_hash=bcrypt.hash(contrasena),  # Aquí encriptamos la contraseña
         )
-
         # Guardamos en la base de datos
         bd.add(usuario)  # Añadimos a la sesión
         bd.commit()  # Confirmamos los cambios
         bd.refresh(usuario)  # Obtenemos el ID generado automáticamente
-
-        # Devolvemos los datos del usuario creado (SIN la contraseña)
+        # Devolvemos los datos del usuario creado, sin la contraseña
         return (
             jsonify(
                 {"id": usuario.id, "nombre": usuario.nombre, "correo": usuario.correo}
