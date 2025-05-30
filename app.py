@@ -120,8 +120,4 @@ def listar_usuarios():
 
 # Esta línea hace que el servidor solo se ejecute si corremos este archivo directamente
 if __name__ == "__main__":
-    # Iniciamos el servidor Flask
-    # host="0.0.0.0" permite conexiones desde cualquier IP
-    # port=5000 es el puerto donde escucha nuestro backend
-    # debug=True reinicia automáticamente cuando cambiamos código
     app.run(host="0.0.0.0", port=5000, debug=True)
