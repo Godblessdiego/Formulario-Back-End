@@ -39,7 +39,7 @@ Este proyecto es una API REST de backend desarrollada con tecnologías modernas 
 
 ### Usuario
 - **id**: Identificador único auto-incremental
-- **nombre**: Nombre del usuario (máximo 120 caracteres)
+- **nombre**: Nombre del usuario 
 - **correo**: Email único con índice para búsquedas rápidas
 - **contrasena_hash**: Contraseña encriptada con bcrypt
 
@@ -52,59 +52,3 @@ Este proyecto es una API REST de backend desarrollada con tecnologías modernas 
 ### POST /usuarios
 Crea un nuevo usuario con validación completa.
 
-**Request Body:**
-```json
-{
-  "nombre": "Diego Figueroa",
-  "correo": "diego@ejemplo.com",
-  "contrasena": "micontraseña123"
-}
-```
-
-**Respuesta 201 (Creado):**
-```json
-{
-  "id": 1,
-  "nombre": "Diego Figueroa",
-  "correo": "diego@ejemplo.com"
-}
-```
-
-**Respuesta 400 (Error en los datos):**
-```json
-{
-  "detalle": "Faltan campos"
-}
-```
-
-**Respuesta 400 (Correo inválido):**
-```json
-{
-  "detalle": "Correo inválido"
-}
-```
-
-**Respuesta 400 (Contraseña muy corta):**
-```json
-{
-  "detalle": "Contraseña muy corta"
-}
-```
-
-**Respuesta 400 (Correo ya registrado):**
-```json
-{
-  "detalle": "Correo ya registrado"
-}
-```
-
-### GET /usuarios
-Obtener todos los usuarios registrados.
-
-**Respuesta 200 (OK):**
-```json
-[
-  {
-  "correo": "drax@ejemplo.com",
-  "contrasena": "contrsaena963"
-}
